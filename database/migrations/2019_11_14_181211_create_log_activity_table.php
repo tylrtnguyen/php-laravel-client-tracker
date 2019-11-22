@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateLogActivityTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('log_activity', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('user_info');
+            $table->string('module_name');
+            $table->string('action');
+            $table->DateTime('date_time');
+            $table->string('IP');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('log_activity');
+    }
+}
